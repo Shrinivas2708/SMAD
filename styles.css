@@ -1,0 +1,453 @@
+@font-face {
+  font-family: 'Sans Francisco';
+  src: url(./fonts/SF-Pro.ttf);
+}
+@font-face {
+  font-family: 'San Francisco Mono';
+  src: url(./fonts/SF-Mono-Regular.otf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: -apple-system, BlinkMacSystemFont, sans-serif */
+   
+     
+     
+  }
+  body, html {
+    width: 100%;
+    height: 100%;
+   
+    background: black;
+    color: white;
+    overflow: hidden;
+    font-family: 'Sans Francisco';
+    cursor: url(./cursor.svg) , default; 
+  }
+
+  .boot-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+    z-index: 9999;
+  }
+  .loading-bar {
+    width: 200px; /* Adjust width as needed */
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    margin-top: 35px; /* Space between logo and bar */
+    overflow: hidden;
+    opacity: 0; /* Start with opacity 0 */
+  }
+  
+  .loading-progress {
+    width: 0%; /* Start at 0 width */
+    height: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: width 0.1s linear; /* Smooth transition for progress */
+  }
+
+  .apple-logo {
+    width: 80px;
+    height: 80px;
+    background: white;
+    mask: url("./apple-logo-svgrepo-com.svg") no-repeat center;
+    -webkit-mask: url('https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg') no-repeat center;
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    opacity: 0;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+ 
+/* Home Styling */
+.home-screen{
+  width: 100vw;
+  height: 100vh;
+  background-image: url(./macos_background.jpg);
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+}
+.top-navbar{
+  width: 100%;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.18);
+  display: flex;
+  justify-content: space-between;
+ 
+}
+.navbar-items{
+ width: 100%; 
+ height: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 10px;
+ padding-left: 15px;
+}
+.logo-container{
+  
+ width: 15px;
+ height: 15px;
+ background-image: url(./Apple_logo_white.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  
+}
+.logo{
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+.items-names{
+  width: 100%;
+  height: 100%;
+}
+.items-names ul{
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 16px;
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+}
+.items-names ul li:nth-child(1){
+ font-weight: bold;
+}
+
+.navbar-icons{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.icons-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.wifi-icon{
+  /* width: 15px; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.search-icon{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.profile-icon{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.blocks-icon{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.date-time{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  padding: 10px;
+}
+
+/* Bottom Dock */
+.bottom-dock{
+position: absolute; 
+bottom: 0;
+background-color: transparent;
+display: flex;
+align-items: center;
+justify-content: center;
+/* border: 1px solid red; */
+width: 100%;
+height: 53px;
+margin-bottom: 5px;
+z-index: 0;
+}
+.inner-dock{
+/* width: 635px;  */
+
+
+height: 100%;
+padding: 0px 10px ;
+background-color: rgba(74, 74, 74, 0.39);
+border-radius: 10px;
+border: solid rgba(26, 26, 26, 1) 0.5px;
+box-shadow: inset 0px 0px 0px rgba(26, 26, 26, 1);
+display: flex;
+align-items: center;
+/* justify-content: space-evenly; */
+gap: 10px;
+
+}
+.dock-images{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  /* width: 100%;  */
+  height: 100%;
+  padding-bottom: 2px;
+  /* border: 1px solid red; */
+  
+}
+
+.terminal-icon{
+  height: 45px;
+  width: 45px;
+  background-image: url(./apple_terminal.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  
+  margin-bottom: 3px;
+  align-items: center;
+  /* border: 1px solid red; */
+display: none;
+transition: all 0.3s ease;
+}
+#seperator_for_terminal{
+  display: none;
+  transition: all 0.3s ease;
+}
+
+/* Adding apps */
+.apps{
+  /* border: 1px solid red; */
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  
+  /* display: none; */
+  display: flex;
+  flex-direction: column;
+}
+.terminal-app{
+  width: 100%;
+  height: 70%;
+  /* border: 1px solid red; */
+  background-image: url(./apple_terminal.png) ;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.apps span{
+  font-size: 12px;
+  text-align: center;
+}
+
+#fake-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: url('./cursor.svg') no-repeat center center;
+  background-size: contain;
+  z-index: 8888;
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+/* Terminal App */
+
+.terminal {
+  display: flex;
+  width: 600px;
+  height: 300px;
+  /* height: auto; */
+  position: absolute;
+  top: 50px;
+  left: 300px;
+  background-color: #222;
+ 
+  flex-direction: column;
+  /* background: rgba(255, 255, 255, 0.05); */
+  border-radius: 10px;
+  /* padding: 2rem; */
+  /* max-width: 600px; */
+  /* margin: auto; */
+  opacity: 0;
+  /* transform: scale(0.9); */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  /* border: 1px solid red; */
+}
+
+.terminal-bar {
+  height: 25px;
+  width: 100%;
+  /* background: #222; */
+  background-color: rgb(45, 46, 45);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 8px 8px 0 0;
+  /* border: 1px solid red; */
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.red { background: #ff5f57; }
+.yellow { background: #ffbd2e; }
+.green { background: #28c840; }
+
+.terminal-content {
+  padding: 1rem;
+  font-size: 1rem;
+  white-space: pre-wrap;
+  font-family: 'San Francisco Mono', monospace !important;
+}
+
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1rem;
+  background: white;
+  animation: blink 1s step-start infinite;
+  vertical-align: bottom;
+}
+.green {
+  color: #00ff00;
+}
+
+/* Modal background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(40, 40, 40, 0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Modal content box */
+.modal-content {
+  background: #1e1e1e;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  max-width: 320px;
+  width: 90%;
+  font-family: 'Sans Francisco';
+  /* font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; */
+}
+
+/* Icon */
+.model-icon-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.modal-icon  {
+  width: 60px;
+  height: 60px;
+  background-image: url(./Apple_logo_white.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  /* border: 2px solid #333; */
+  
+}
+
+/* Headings and text */
+.modal-content h2 {
+  font-size: 20px;
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+.modal-content p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+/* Buttons */
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer; 
+  width: 150px;
+  transition: 0.2s ease;
+}
+
+.btn.yes {
+  background: #007aff;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 122, 255, 0.5);
+}
+
+.btn.yes:hover {
+  background: #006ae6;
+}
+
+.btn.no {
+  background: #3c3c3c;
+  color: #bbb;
+}
+
+.btn.no:hover {
+  background: #4b4b4b;
+}
